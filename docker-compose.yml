@@ -1,0 +1,23 @@
+services:
+  # Agent Estimator Service (Python FastAPI + GigaChat)
+  agent-estimator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: agent-estimator-service
+    environment:
+      - SERVER_PORT=8080
+      - DEBUG=${DEBUG:-False}
+      # GigaChat настройки
+      - GIGACHAT_API_KEY=${GIGACHAT_API_KEY:-}
+      - GIGACHAT_SCOPE=${GIGACHAT_SCOPE:-GIGACHAT_API_PERS}
+      - GIGACHAT_MODEL=${GIGACHAT_MODEL:-GigaChat}
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
