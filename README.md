@@ -16,3 +16,118 @@
 - **LangChain** — интеграция с LLM
 - **GigaChat** — LLM от Сбера
 - **Docker** — контейнеризация
+
+## Быстрый старт
+
+### 1. Клонирование
+
+```bash
+git clone https://github.com/ChargeOnTop/work21-agent.git
+cd work21-agent
+```
+
+### 2. Получение API ключа GigaChat
+
+1. Зарегистрируйтесь на https://developers.sber.ru/
+2. Создайте проект и получите API ключ
+3. Скопируйте ключ (credentials)
+
+### 3. Настройка окружения
+
+```bash
+cp .env.example .env
+# Вставьте ваш GIGACHAT_API_KEY в .env
+```
+
+### 4. Запуск с Docker
+
+```bash
+docker compose up -d
+```
+
+### 5. Проверка
+
+```bash
+curl http://localhost:8080/api/v1/llm/health
+```
+
+## API Endpoints
+
+### Health Check
+```
+GET /api/v1/llm/health
+```
+
+### Простой запрос к LLM
+```
+POST /api/v1/llm/simple
+{
+  "prompt": "Привет, как дела?"
+}
+```
+
+### Чат с историей
+```
+POST /api/v1/llm/chat
+{
+  "messages": [
+    {"role": "user", "content": "Привет!"}
+  ]
+}
+```
+
+### Оценка проекта
+```
+POST /api/v1/llm/estimate
+{
+  "title": "Мобильное приложение",
+  "spec_text": "Нужно разработать приложение для заказа такси..."
+}
+```
+
+## Структура проекта
+
+```
+work21-agent/
+├── app/
+│   ├── api/           # API endpoints
+│   ├── core/          # Конфигурация
+│   ├── schemas/       # Pydantic схемы
+│   ├── services/      # LLM сервисы
+│   └── main.py        # Точка входа
+├── Dockerfile
+├── docker-compose.yml
+└── requirements.txt
+```
+
+## Переменные окружения
+
+| Переменная | Описание | По умолчанию |
+|------------|----------|--------------|
+| `GIGACHAT_API_KEY` | API ключ GigaChat | **обязательно** |
+| `GIGACHAT_MODEL` | Модель GigaChat | `GigaChat` |
+| `SERVER_PORT` | Порт сервера | `8080` |
+
+## Swagger документация
+
+После запуска: http://localhost:8080/swagger-ui.html
+
+## Команды
+
+```bash
+# Запуск
+docker compose up -d
+
+# Логи
+docker compose logs -f
+
+# Остановка
+docker compose down
+
+# Пересборка
+docker compose up -d --build
+```
+
+## Лицензия
+
+MIT
