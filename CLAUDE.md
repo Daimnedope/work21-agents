@@ -17,7 +17,7 @@
 ## Структура проекта
 
 ```
-work21-agent/
+work21-agents/
 ├── app/
 │   ├── main.py              # Точка входа FastAPI
 │   ├── api/
@@ -131,8 +131,9 @@ LLM_PROVIDER=gigachat
 
 ## Связанные сервисы
 
-- **Backend:** https://github.com/ChargeOnTop/work21-backend
+- **Backend:** https://github.com/oinuritto/work21-backend
 - **Frontend:** https://github.com/ChargeOnTop/work21-fr
+- **Admin Panel:** https://github.com/Daimnedope/work21-admins
 - **Deploy:** https://github.com/ChargeOnTop/work21-deploy
 
 ## Production

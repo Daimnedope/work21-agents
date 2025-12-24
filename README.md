@@ -22,8 +22,8 @@
 ### 1. Клонирование
 
 ```bash
-git clone https://github.com/ChargeOnTop/work21-agent.git
-cd work21-agent
+git clone https://github.com/Daimnedope/work21-agents.git
+cd work21-agents
 ```
 
 ### 2. Получение API ключа GigaChat
@@ -88,7 +88,7 @@ POST /api/v1/llm/estimate
 ## Структура проекта
 
 ```
-work21-agent/
+work21-agents/
 ├── app/
 │   ├── api/           # API endpoints
 │   ├── core/          # Конфигурация
@@ -99,6 +99,13 @@ work21-agent/
 ├── docker-compose.yml
 └── requirements.txt
 ```
+
+## Связанные сервисы
+
+- **Backend:** https://github.com/oinuritto/work21-backend
+- **Frontend:** https://github.com/ChargeOnTop/work21-fr
+- **Admin Panel:** https://github.com/Daimnedope/work21-admins
+- **Deploy:** https://github.com/ChargeOnTop/work21-deploy
 
 ## Переменные окружения
 
