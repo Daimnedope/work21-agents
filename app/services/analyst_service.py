@@ -13,15 +13,15 @@ from app.services.llm_service import llm_service
 logger = logging.getLogger(__name__)
 
 
-# Ставки по ролям (условные единицы в час)
+# Ставки по ролям (рублей/час)
 DEFAULT_RATES_PER_HOUR = {
-    "backend": 50,
-    "frontend": 45,
-    "devops": 60,
-    "qa": 30,
-    "ux": 40,
-    "pm": 70,
-    "default": 45
+    "backend": 500,
+    "frontend": 350,
+    "devops": 600,
+    "qa": 300,
+    "ux": 600,
+    "pm": 800,
+    "default": 500
 }
 
 
